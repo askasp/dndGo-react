@@ -76,6 +76,7 @@ function NestedList() {
                 justify="center"
                 style={{ minHeight: '100vh' }}
             >
+                <Grid className={classes.root} item xs={12} md={4}>
         <List
             component="nav"
             className={classes.root}
@@ -193,6 +194,8 @@ function NestedList() {
                 </CardContent>
             </Card>
         </List>
+                </Grid>
+                <Grid item className={classes.root} xs={12} md={4}>
         <List
     component="nav"
     //subheader={<ListSubheader component="div">Stats</ListSubheader>}
@@ -312,6 +315,7 @@ function NestedList() {
                 </CardContent>
             </Card>
         </List>
+            </Grid>
             </Grid>
     );
 }
