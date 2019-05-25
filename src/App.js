@@ -5,12 +5,16 @@ import { ThemeProvider } from '@material-ui/styles';
 import {createMuiTheme} from '@material-ui/core/styles'
 import NestedList from './NestedList'
 import {useRoutes} from 'hookrouter';
+import WelcomeCard from "./WelcomeCard";
 
 
 const theme = createMuiTheme({
     palette:{
-        collapsible:"#1e1e1e",
+        card:"#1e1e1e",
         background:"#121212",
+        button:{
+            primary:"#bb86fc",
+        },
         text:{
             primary:"rgba(255,255,255,0.87)",
             secondary:"rgba(255,255,255,0.60)",
@@ -22,7 +26,7 @@ const theme = createMuiTheme({
 )
 
 const routes = {
-    //'/': () => <div></div> ,
+    '/': () => <WelcomeCard/>,
     '/character': () => <NestedList />,
     //'/products': () => <ProductOverview />,
     //'/products/:id': ({id}) => <ProductDetails id={id} />
@@ -34,9 +38,10 @@ function App() {
     const routeResult = useRoutes(routes);
   return (
       <ThemeProvider theme={theme}>
-    <div className="App" style={{backgroundColor:"#121212"}}>
-<Appbar/>
-<NestedList/>
+    <div className="App" style={{minHeight:"100vh",backgroundColor:"#121212"}}>
+        <Appbar/>
+        {routeResult}
+
 
     </div>
 </ThemeProvider>
