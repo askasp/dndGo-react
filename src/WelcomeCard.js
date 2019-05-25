@@ -47,7 +47,7 @@ function WelcomeCard() {
                     Import an existing character from the menu or..
                 </Typography>
                 </CardContent>
-                <a href={"/character"} style={{textDecoration:"none"}}>
+                <a href={"/newcharacter"} style={{textDecoration:"none"}}>
                 <Fab variant="extended" aria-label="Delete" className={classes.fab}>
                     <AddIcon className={classes.extendedIcon} />
                     Create new

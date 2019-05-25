@@ -15,7 +15,7 @@ import StarBorder from '@material-ui/icons/StarBorder';
 import Divider from "@material-ui/core/Divider";
 import {mdiDumbbell,mdiBookOpenPageVariant, mdiHeart,mdiShield,mdiDiceMultiple,mdiShapePlus,mdiAccountAlert,mdiRunFast } from '@mdi/js'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faDumbbell,faHeart,faShieldAlt,faDiceFive,faShoePrints, faCoffee,faPrescriptionBottleAlt,faHatWizard,faBookReader,faRunning,faLaughBeam,faLightbulb } from '@fortawesome/free-solid-svg-icons'
+import { faDumbbell,faHeart,faShieldAlt,faDiceFive,faShoePrints, faCoffee,faPrescriptionBottleAlt,faHatWizard,faBookReader,faRunning,faLaughBeam,faLightbulb } from '@fortawesome/free-solid-svg-icons'
 import Icon from '@mdi/react'
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -70,9 +70,9 @@ function NestedList() {
     return (
             <Grid
                 container
-                spacing={0}
-                direction="column"
-                alignItems="center"
+                spacing={1}
+                //direction="column"
+               // alignItems="center"
                 justify="center"
                 style={{ minHeight: '100vh' }}
             >
@@ -86,7 +86,7 @@ function NestedList() {
                     <ListSubheader component="div">Stats</ListSubheader>
             <ListItem button onClick={handleClick('open1')}>
                 <ListItemIcon className={classes.listItem} >
-                    <Icon size={1} path={mdiHeart} color={"rgba(255,255,255,0.60"} />
+                    <FontAwesomeIcon size={"1x"} icon={faHeart}/>
                 </ListItemIcon>
                 <ListItemText primary="HP 30/100" />
                 { (open ==='open1') ? <ExpandLess /> : <ExpandMore />}
@@ -104,7 +104,7 @@ function NestedList() {
             <MyDivider/>
             <ListItem button onClick={handleClick('open2')}>
                 <ListItemIcon className={classes.listItem} >
-                    <Icon size={1} path={mdiShield} color={"rgba(255,255,255,0.60"} />
+                    <FontAwesomeIcon size={"1x"} icon={faShieldAlt}/>
                 </ListItemIcon>
                 <ListItemText primary="AC: 17" />
                 { (open ==='open2') ? <ExpandLess /> : <ExpandMore />}
@@ -122,7 +122,7 @@ function NestedList() {
             <MyDivider/>
             <ListItem button onClick={handleClick('open3')}>
                 <ListItemIcon className={classes.listItem} >
-                    <Icon size={1} path={mdiDiceMultiple} color={"rgba(255,255,255,0.60"} />
+                    <FontAwesomeIcon size={"1x"} icon={faDiceFive}/>
                 </ListItemIcon>
                 <ListItemText primary="Hit Dice: 5d12" />
                 { (open ==='open3') ? <ExpandLess /> : <ExpandMore />}
@@ -140,7 +140,7 @@ function NestedList() {
             <MyDivider/>
             <ListItem button onClick={handleClick('open4')}>
                 <ListItemIcon className={classes.listItem} >
-                    <Icon size={1} path={mdiRunFast} color={"rgba(255,255,255,0.60"} />
+                    <FontAwesomeIcon size={"1x"} icon={faShoePrints}/>
                 </ListItemIcon>
                 <ListItemText primary="Speed: 30" />
                 { (open ==='open4') ? <ExpandLess /> : <ExpandMore />}
@@ -158,7 +158,7 @@ function NestedList() {
             <MyDivider/>
             <ListItem button onClick={handleClick('open5')}>
                 <ListItemIcon className={classes.listItem} >
-                    <Icon size={1} path={mdiAccountAlert} color={"rgba(255,255,255,0.60"} />
+                    <FontAwesomeIcon size={"1x"} icon={faLightbulb}/>
                 </ListItemIcon>
                 <ListItemText primary="Initiative : 3" />
                 { (open ==='open5') ? <ExpandLess /> : <ExpandMore />}
@@ -311,7 +311,6 @@ function NestedList() {
                     </ListItem>
                 </List>
             </Collapse>
-            <MyDivider/>
                 </CardContent>
             </Card>
         </List>

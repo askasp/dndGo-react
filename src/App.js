@@ -6,6 +6,7 @@ import {createMuiTheme} from '@material-ui/core/styles'
 import NestedList from './NestedList'
 import {useRoutes} from 'hookrouter';
 import WelcomeCard from "./WelcomeCard";
+import CreateCharacerForm from './CreateCharacterForm'
 
 
 const theme = createMuiTheme({
@@ -28,9 +29,11 @@ const theme = createMuiTheme({
 const routes = {
     '/': () => <WelcomeCard/>,
     '/character': () => <NestedList />,
+    '/newcharacter':()=> <CreateCharacerForm/>
     //'/products': () => <ProductOverview />,
     //'/products/:id': ({id}) => <ProductDetails id={id} />
 };
+
 
 //<NestedList/>
 
