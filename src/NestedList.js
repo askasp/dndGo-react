@@ -28,7 +28,6 @@ const useStyles = makeStyles(theme => ({
         width: '100%',
         maxWidth: 360,
 //        backgroundColor: "#121212",
-        color:theme.palette.text.secondary,
     },
     listItem:{
         color:theme.palette.text.secondary,
@@ -36,10 +35,9 @@ const useStyles = makeStyles(theme => ({
     card:{
         //width:'70%',
         backgroundColor:"#1e1e1e",
-        color: theme.palette.text.primary,
+        color:theme.palette.text.secondary,
     },
     icon: {
-        color: theme.palette.text.secondary,
     },
     nested: {
         paddingLeft: theme.spacing(4),

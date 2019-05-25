@@ -10,11 +10,15 @@ import CreateCharacerForm from './CreateCharacterForm'
 
 
 const theme = createMuiTheme({
+
+    errorColor:"#cf6679",
     palette:{
         card:"#1e1e1e",
+        focus:"#2d2d2d",
         background:"#121212",
         button:{
             primary:"#bb86fc",
+            secondary:"#03DAC5",
         },
         text:{
             primary:"rgba(255,255,255,0.87)",

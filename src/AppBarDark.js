@@ -65,8 +65,20 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function SearchAppBar() {
+function SearchAppBar(props) {
   const classes = useStyles();
+  let a = window.location.href
+  a = a.split('/')
+  let Title = "DnDGo"
+  if (a.length >3){
+    if (a[3] === "newcharacter") {
+      Title = "New Character"
+    }
+    else{
+      Title = "Kami 8"
+    }
+    }
+
   return (
     <div className={classes.root}>
       <AppBar className={classes.appbar} position="static">
@@ -80,7 +92,7 @@ function SearchAppBar() {
             <MenuIcon />
           </IconButton>
           <Typography className={classes.title} variant="h6" noWrap>
-        Kami 8
+            {Title}
           </Typography>
           <div className={classes.search}>
             <div className={classes.searchIcon}>

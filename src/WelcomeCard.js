@@ -1,15 +1,11 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
-import Icon from '@material-ui/core/Icon';
-import DeleteIcon from '@material-ui/icons/Delete';
-import NavigationIcon from '@material-ui/icons/Navigation';
-
+import {A} from 'hookrouter'
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -47,12 +43,12 @@ function WelcomeCard() {
                     Import an existing character from the menu or..
                 </Typography>
                 </CardContent>
-                <a href={"/newcharacter"} style={{textDecoration:"none"}}>
+                <A href={"/newcharacter"} style={{textDecoration:"none"}}>
                 <Fab variant="extended" aria-label="Delete" className={classes.fab}>
                     <AddIcon className={classes.extendedIcon} />
                     Create new
                 </Fab>
-                </a>
+                </A>
             </Card>
         </div>
     );
