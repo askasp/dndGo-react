@@ -7,7 +7,8 @@ import NestedList from './NestedList'
 import {useRoutes} from 'hookrouter';
 import WelcomeCard from "./WelcomeCard";
 import CreateCharacerForm from './CreateCharacterForm'
-
+import myData from './5e-SRD-Classes'
+import {useState} from 'react';
 
 const theme = createMuiTheme({
 
@@ -30,35 +31,92 @@ const theme = createMuiTheme({
 }
 )
 
-const routes = {
-    '/': () => <WelcomeCard/>,
-    '/character': () => <NestedList />,
-    '/newcharacter':()=> <CreateCharacerForm/>
-    //'/products': () => <ProductOverview />,
-    //'/products/:id': ({id}) => <ProductDetails id={id} />
-};
-
 
 //<NestedList/>
 
+function is_server() {
+    return ! (typeof window != 'undefined' && window.document);
+}
 function App() {
+    const bla = [{
+        race:"hei",
+        jada:"jad",
+    }]
+    const blas = [{
+        race:"hei2",
+        jada:"jad",
+    }]
+    const [name, setName] = useLocalStorage('names', []);
+    const routes = {
+        '/': () => <WelcomeCard/>,
+        '/character': () => <NestedList />,
+        '/newcharacter':()=> <CreateCharacerForm characters={name} setCharacters={setName}/>
+        //'/products': () => <ProductOverview />,
+        //'/products/:id': ({id}) => <ProductDetails id={id} />
+    };
     const routeResult = useRoutes(routes);
-  return (
+
+   // const [characters,setCharacters] = useLocalStorage("characters",[])
+    //setCharacters(bla);
+    const TestComp = (props) => {
+        console.log(props)
+        return <div> hei</div>
+    }
+
+    return (
+      <div>
+          <input
+              type="text"
+              placeholder="Enter your name"
+              value={name}
+              onChange={e => setName(e.target.value)}
+          />
       <ThemeProvider theme={theme}>
     <div className="App" style={{minHeight:"100vh",backgroundColor:"#121212"}}>
         <Appbar/>
         {routeResult}
-
+       <TestComp jada={name}/>
 
     </div>
 </ThemeProvider>
+      </div>
   );
 }
 
 export default App;
 
-const MyApp = () => {
-    const routeResult = useRoutes(routes);
+export function useLocalStorage(key, initialValue) {
+    // State to store our value
+    // Pass initial state function to useState so logic is only executed once
+    const [storedValue, setStoredValue] = useState(() => {
+        try {
+            // Get from local storage by key
+            const item = window.localStorage.getItem(key);
+            // Parse stored json or if none return initialValue
+            return item ? JSON.parse(item) : initialValue;
+        } catch (error) {
+            // If error also return initialValue
+            console.log(error);
+            return initialValue;
+        }
+    });
 
-    //return routeResult || <NotFoundPage />;
+    // Return a wrapped version of useState's setter function that ...
+    // ... persists the new value to localStorage.
+    const setValue = value => {
+        try {
+            // Allow value to be a function so we have same API as useState
+            const valueToStore =
+                value instanceof Function ? value(storedValue) : value;
+            // Save state
+            setStoredValue(valueToStore);
+            // Save to local storage
+            window.localStorage.setItem(key, JSON.stringify(valueToStore));
+        } catch (error) {
+            // A more advanced implementation would handle the error case
+            console.log(error);
+        }
+    };
+
+    return [storedValue, setValue];
 }

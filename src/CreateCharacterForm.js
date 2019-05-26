@@ -16,7 +16,8 @@ import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import Checkbox from '@material-ui/core/Checkbox';
-
+import Races from './dnd5eDB/5e-SRD-Races'
+import {useLocalStorage} from './App.js'
 
 const valueList = (n) => {
     let list = []
@@ -25,6 +26,13 @@ const valueList = (n) => {
     }
     return list
 }
+const abilityList = valueList(20)
+
+const raceSelectList = Races.map(race => ({
+    value: race,
+    label: race.name,
+}))
+console.log(raceSelectList)
 
 
 const ranges = [
@@ -108,7 +116,7 @@ const useStyles = makeStyles(theme => ({
     }
 ));
 
-function InputAdornments() {
+function InputAdornments(props) {
     const classes = useStyles();
     const [values, setValues] = React.useState({
         amount: '',
@@ -127,7 +135,15 @@ function InputAdornments() {
 
     });
 
+    //const [name, setName] = useLocalStorage('name', 'Bob');
     const handleChange = prop => event => {
+        //let jadaad = props.characters.append(event.target.value)
+        console.log(event.target.value)
+        let a = []
+        console.log(a.push(event.target.value))
+        console.log("a is",a)
+
+        props.setCharacters([])
         setValues({ ...values, [prop]: event.target.value });
     };
 
@@ -161,13 +177,20 @@ function InputAdornments() {
         )
     }
 
-    const abilityList = valueList(20)
     // Mobile first, but it did look really bad on desktop before this
     let dir  ="column"
     let ali = "center"
     if  (window.innerWidth > 600){
         dir=""
         ali=""
+    }
+    console.log("races",Races)
+    console.log(Races.length)
+    const Tulletest = (props)=>{
+        return(
+            <div style={{color:'white'}}>{props.name}</div>
+        )
+
     }
     return (
         <Grid
@@ -177,6 +200,7 @@ function InputAdornments() {
             alignItems={ali}
             justify="center"
         >
+
             <Grid item className={classes.root} xs={12} md={6}>
                 <Card className={classes.card}>
                     <CardContent>
@@ -191,7 +215,7 @@ function InputAdornments() {
                                         onChange={handleChange('amount')}
                                     />
                                 </FormControl>
-                        <SelectComponent item={ranges} label={"Race"}/>
+                        <SelectComponent item={raceSelectList} label={"Race"}/>
                             </Grid>
                         <Grid item xs={6}>
                             <SelectComponent item={ranges} label={"Class"}/>
